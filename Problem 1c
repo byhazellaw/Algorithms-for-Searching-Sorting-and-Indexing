@@ -15,6 +15,7 @@ def twoWayMerge(lst1, lst2):
             result.append(lst2[0])
             lst2.pop(0)
             
+    #either array will be empty now        
     while (len(lst1)!=0):
     
         result.append(lst1[0])
