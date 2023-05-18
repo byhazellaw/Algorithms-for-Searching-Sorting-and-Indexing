@@ -16,7 +16,7 @@ def findCrossoverIndexHelper(x, y, left, right):
     assert(x[left] > y[left])
     assert(x[right] < y[right])
     
-    # your code here - homework part
+    # your code here 
     
     mid = (left + right)//2
     if x[mid]>=y[mid] and x[mid+1]<=y[mid+1]:
