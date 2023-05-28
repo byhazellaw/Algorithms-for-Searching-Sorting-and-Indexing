@@ -1,0 +1,79 @@
+class MaxHeap:
+    def __init__(self):
+        self.H = [None]
+        
+    def size(self):
+        return len(self.H)-1
+    
+    def __repr__(self):
+        return str(self.H[1:])
+        
+    def satisfies_assertions(self):
+        for i in range(2, len(self.H)):
+            assert self.H[i] <= self.H[i//2],  f'Maxheap property fails at position {i//2}, parent elt: {self.H[i//2]}, child elt: {self.H[i]}'
+    
+    def max_element(self):
+        return self.H[1]
+    
+    def bubble_up(self, index):
+        # your code here
+        assert index >= 1
+        if index == 1: 
+            return 
+        
+        parent_index = index // 2
+        if self.H[parent_index] >= self.H[index]:
+            return 
+        else:
+            self.H[parent_index], self.H[index] = self.H[index], self.H[parent_index]
+            self.bubble_up(parent_index)
+            
+    
+    def bubble_down(self, index):
+        # your code here
+        assert index >= 1 and index < len(self.H)
+        lchild_index = 2 * index
+        rchild_index = 2 * index + 1
+        # set up the value of keft child to the element at that index if valid, or else make it +Infinity
+        lchild_value = self.H[lchild_index] if lchild_index < len(self.H) else -float('inf')
+        # set up the value of right child to the element at that index if valid, or else make it +Infinity
+        rchild_value = self.H[rchild_index] if rchild_index < len(self.H) else -float('inf')
+       
+        if self.H[index] >= max(lchild_value, rchild_value):
+            return self.H
+        
+        min_child_value, min_child_index = max ((lchild_value, lchild_index), (rchild_value, rchild_index))
+        
+        self.H[index], self.H[min_child_index] = self.H[min_child_index], self.H[index]
+        
+        return self.bubble_down(min_child_index)        
+        
+        
+    # Function: insert
+    # Insert elt into maxheap
+    # Use bubble_up/bubble_down function
+    def insert(self, elt):
+        # your code here
+        self.H.append(elt)
+        # Get the index of the new element
+        index = len(self.H)-1
+        
+        if (index>1):
+            parent_index = index //2
+            # Compare the new element with its parent and swap if necessary
+            
+            if (self.H[index] <= self.H[parent_index]):
+                return
+            else:
+                self.bubble_up(index)
+      
+    # Function: delete_max
+    # delete the largest element in the heap. Use bubble_up/bubble_down
+    def delete_max(self):
+        # your code here
+        if (self.size()>1):
+            self.H[1], self.H[len(self.H)-1]= self.H[len(self.H)-1],self.H[1]
+            self.H.pop(len(self.H)-1)
+            self.bubble_down(1)
+        else:
+            self.H.pop(0)
