@@ -1,0 +1,34 @@
+# Write an array called a1 that will be incorrectly partitioned by the tryPartition algorithm above
+# Your input when run on tryPartition algorithm should raise an out of bounds array access exception
+# in the swap function or fail to partition correctly. 
+
+## Define an array a1 below of length > 0 that will be incorrectly partitioned by tryPartition algorithm.
+## We will test whether your solution works in the subsequent cells.
+# your code here
+a1 = [1,-1]
+assert( len(a1) > 0)
+
+# Write an array called a2 that will be incorrectly partitioned by the tryPartition algorithm above
+# Your input when run on tryPartition algorithm should raise an out of bounds array access exception
+# in the swap function or fail to partition correctly. 
+# a2 must be different from a1
+
+# your code here
+a2 = [0]
+assert( len(a2) > 0)
+assert (a1 != a2)
+
+
+# Write an array called a3 that will be incorrectly partitioned by the tryPartition algorithm above
+# Your input when run on tryPartition algorithm should raise an out of bounds array access exception
+# in the swap function or fail to partition correctly. 
+# a3 must be different from a1, a2
+
+# your code here
+a3 = [4,2]
+assert( len(a3) > 0)
+assert (a3 != a2)
+assert (a3 != a1)
+
+def dummyFunction():
+    pass
