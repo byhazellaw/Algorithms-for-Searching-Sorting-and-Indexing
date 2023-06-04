@@ -1,0 +1,20 @@
+def testIfPartitioned(a, k):
+    # TODO : test if all elements at indices < k are all <= a[k]
+    #         and all elements at indices > k are all > a[k]
+    # return TRUE if the array is correctly partitioned around a[k] and return FALSE otherwise
+    assert 0 <= k < len(a)
+    # your code here
+    index = 0
+    while index < len(a):
+        if index <= k:
+            if a[index] <= a[k]:
+                index = index +1
+            else:
+                return False
+        else:
+            if a[index] > a[k]:
+                index = index +1
+            else:
+                return False
+            
+    return True
