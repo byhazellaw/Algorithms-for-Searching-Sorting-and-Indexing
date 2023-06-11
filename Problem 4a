@@ -29,3 +29,25 @@ class CountMinSketch:
         #return cell location
         return self.counters[self.get_cell(word)]
         
+        
+        
+       
+ # We will now implement the algorithm for a bank of k counters
+
+# Initialize k different counters
+def initialize_k_counters(k, m): 
+    return [CountMinSketch(m) for i in range(k)]
+
+# Function increment_counters
+# increment each of the individual counters with the word
+def increment_counters(count_min_sketches, word):
+    # your code here
+    for cms in count_min_sketches:
+        #go through each hash function - k 
+        cms.increment(word)
+    return count_min_sketches
+        
+# Function: approximate_count
+# Get the approximate count by querying each counter bank and taking the minimum
+def approximate_count(count_min_sketches, word):
+    return min([cms.approximateCount(word) for cms in count_min_sketches])
