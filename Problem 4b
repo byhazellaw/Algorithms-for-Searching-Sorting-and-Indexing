@@ -1,0 +1,25 @@
+class BloomFilter:
+    def __init__(self, nbits, nhash):
+        self.bits = [False]*nbits # Initialize all bits to fals
+        self.m = nbits
+        self.k = nhash
+        # get k randdom hash functions
+        self.hash_fun_reps = [get_random_hash_function() for i in range(self.k)]
+    
+    # Function to insert a word in a Bloom filter.
+    def insert(self, word):
+        # your code here
+        #hash word with all functions in self.hash_fun_reps
+        for i in range(self.k):
+            hash_result = hash_string(self.hash_fun_reps[i], word)
+            self.bits[hash_result%self.m] = True
+            
+    # Check if a word belongs to the Bloom Filter
+    def member(self, word):
+        # your code here
+        for i in range(self.k):
+            hash_result = hash_string(self.hash_fun_reps[i], word)
+            if self.bits[hash_result%self.m] is False:
+                return False
+        return True
+        
